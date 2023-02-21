@@ -1,19 +1,16 @@
 using System.Collections.Generic;
+using Bell.Core.Domain.Repositories;
 using Bell.Products.Domain.Models;
 
 namespace Bell.Products.Domain.Repositories;
 
-public interface IProductRepository
+public interface IProductRepository : IPagingRepository<Product>
 {
-    IReadOnlyCollection<Product> GetAll();
-
-    IReadOnlyCollection<Product> GetAllPaging(uint page);
-
     Product? Get(uint id);
 
     bool Add(Product product);
 
     bool Update(Product product);
 
-    bool Delet(uint id);
+    bool Delete(uint id);
 }
