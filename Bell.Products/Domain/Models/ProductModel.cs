@@ -1,6 +1,6 @@
 namespace Bell.Products.Domain.Models;
 
-public class Product
+public class ProductModel
 {
     public uint Id { get; init; }
 

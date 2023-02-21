@@ -4,13 +4,13 @@ using Bell.Products.Domain.Models;
 
 namespace Bell.Products.Domain.Repositories;
 
-public interface IProductRepository : IPager<Product>
+public interface IProductRepository : IPager<ProductModel>
 {
-    Product? Get(uint id);
+    ProductModel? Get(uint id);
 
-    bool Add(Product product);
+    bool Add(ProductModel product);
 
-    bool Update(Product product);
+    bool Update(ProductModel product);
 
     bool Delete(uint id);
 }
