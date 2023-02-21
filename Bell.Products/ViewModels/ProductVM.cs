@@ -1,3 +1,5 @@
+using Bell.Products.Domain.Models;
+
 namespace Bell.Products.ViewModels;
 
 public class ProductVM
@@ -9,4 +11,12 @@ public class ProductVM
     public string Description { get; init; } = "";
 
     public decimal Price { get; init; }
+
+    public ProductVM(ProductModel product)
+    {
+        Id = product.Id;
+        Name = product.Name;
+        Description = product.Description;
+        Price = product.Price;
+    }
 }
