@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Products", "Products", "{4370DC81-B465-4C1C-BBD5-7020B98F6F90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bell", "Bell\Bell.csproj", "{BB088836-7C8E-45D2-A704-CB8B225CAF34}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bell.Products", "Bell.Products\Bell.Products.csproj", "{BB088836-7C8E-45D2-A704-CB8B225CAF34}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Foundation", "Foundation", "{857F2936-D2F9-4EB3-985B-9F301F59BDCE}"
 EndProject
