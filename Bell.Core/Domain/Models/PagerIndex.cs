@@ -1,8 +1,6 @@
-using System.Collections.Generic;
-
 namespace Bell.Core.Domain.Models;
 
-public class PageIndex
+public class PagerIndex
 {
     /// <summary>
     /// Gets the index of the current page. Default is 0.
@@ -46,7 +44,7 @@ public class PageIndex
     /// <param name="currentIndex">The index of the current page.</param>
     /// <param name="lastIndex">The index of the last page.</param>
     /// <param name="firstIndex">The index of the first page. Default is 0.</param>
-    public PageIndex(int currentIndex, int lastIndex, int firstIndex = 0)
+    public PagerIndex(int currentIndex, int lastIndex, int firstIndex = 0)
     {
         CurrentIndex = currentIndex;
         LastIndex = lastIndex;

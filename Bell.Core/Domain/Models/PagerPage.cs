@@ -1,13 +1,13 @@
 namespace Bell.Core.Domain.Models;
 
-public class Page<T>
+public class PagerPage<T>
 {
     public IReadOnlyCollection<T> Data { get; init; }
 
     /// <summary>
     /// Gets the index of the current page.
     /// </summary>
-    public PageIndex PageIndex { get; init; }
+    public PagerIndex PageIndex { get; init; }
 
     /// <summary>
     /// Gets the maximum number of items per page. Default is 25.
@@ -59,16 +59,18 @@ public class Page<T>
     /// </summary>
     public int? NextPage => PageIndex.NextIndex + PageNumberIndexZero;
 
+    public PagerPage() : this(new List<T>(), 0, 0) { }
+
     /// <summary>
-    /// Creates a new page with PageIndex.FirstIndex and PageNumberIndexZero set to defaults.
+    /// Creates a new page with PagerPageIndex.FirstIndex and PagerPageNumberIndexZero set to defaults.
     /// </summary>
     /// <param name="data">The data of the current page.</param>
     /// <param name="currentIndex">The index of the current page.</param>
     /// <param name="lastIndex">The index of the last page.</param>
     /// <param name="pageSize">The size of each page.</param>
     /// <param name="totalItems">The total number of items in the search.</param>
-    public Page(IReadOnlyCollection<T> data, int currentIndex, int lastIndex, uint pageSize = 25, ulong? totalItems = null)
-        : this(data, new PageIndex(currentIndex, lastIndex), pageSize, totalItems) { }
+    public PagerPage(IReadOnlyCollection<T> data, int currentIndex, int lastIndex, uint pageSize = 25, ulong? totalItems = null)
+        : this(data, new PagerIndex(currentIndex, lastIndex), pageSize, totalItems) { }
 
     /// <summary>
     /// Creates a new page.
@@ -78,12 +80,23 @@ public class Page<T>
     /// <param name="pageSize">The size of each page.</param>
     /// <param name="totalItems">The total number of items in the search.</param>
     /// <param name="pageNumberIndexZero">The page number of the page with index zero. Default is 1.</param>
-    public Page(IReadOnlyCollection<T> data, PageIndex pageIndex, uint pageSize = 25, ulong? totalItems = null, int pageNumberIndexZero = 1)
+    public PagerPage(IReadOnlyCollection<T> data, PagerIndex pageIndex, uint pageSize = 25, ulong? totalItems = null, int pageNumberIndexZero = 1)
     {
         Data = data;
         PageIndex = pageIndex;
         PageSize = pageSize;
         TotalItems = totalItems;
         PageNumberIndexZero = pageNumberIndexZero;
+    }
+
+    public static PagerPage<T> Clone<T2>(IReadOnlyCollection<T> data, PagerPage<T2> oldPagerPage)
+    {
+        return new PagerPage<T>(
+            data,
+            oldPagerPage.PageIndex,
+            oldPagerPage.PageSize,
+            oldPagerPage.TotalItems,
+            oldPagerPage.PageNumberIndexZero
+        );
     }
 }

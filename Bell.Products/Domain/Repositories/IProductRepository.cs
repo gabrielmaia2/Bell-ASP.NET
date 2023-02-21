@@ -4,7 +4,7 @@ using Bell.Products.Domain.Models;
 
 namespace Bell.Products.Domain.Repositories;
 
-public interface IProductRepository : IPagingRepository<Product>
+public interface IProductRepository : IPager<Product>
 {
     Product? Get(uint id);
 
