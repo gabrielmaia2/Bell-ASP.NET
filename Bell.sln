@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Foundation", "Foundation", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bell.Core", "Bell.Core\Bell.Core.csproj", "{42EE2FB5-23C0-447F-8F61-038A67879FC8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bell.Products.Specs", "Bell.Products.Specs\Bell.Products.Specs.csproj", "{1BE8857C-C069-49FE-A44C-EE3259B70308}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
