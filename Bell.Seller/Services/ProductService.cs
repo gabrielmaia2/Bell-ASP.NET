@@ -15,7 +15,7 @@ public class ProductService
         this.repository = repository;
     }
 
-    internal PagerPage<ProductModel> Search(string search, uint index)
+    internal PagerPage<Product> Search(string search, uint index)
     {
         return repository.GetPage((int)index, PageSize);
     }

@@ -12,7 +12,7 @@ public class ProductVM
 
     public decimal Price { get; init; }
 
-    public ProductVM(ProductModel product)
+    public ProductVM(Product product)
     {
         Id = product.Id;
         Name = product.Name;

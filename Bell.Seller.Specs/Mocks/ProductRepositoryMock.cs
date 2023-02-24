@@ -6,14 +6,14 @@ namespace Bell.Seller.Specs.Mocks;
 
 public class ProductRepositoryMock : IProductRepository
 {
-    private readonly List<ProductModel> products;
+    private readonly List<Product> products;
 
-    public ProductRepositoryMock(List<ProductModel> products)
+    public ProductRepositoryMock(List<Product> products)
     {
         this.products = products;
     }
 
-    public bool Add(ProductModel product)
+    public bool Add(Product product)
     {
         products.Add(product);
         return true;
@@ -25,17 +25,17 @@ public class ProductRepositoryMock : IProductRepository
         return true;
     }
 
-    public ProductModel? Get(uint id)
+    public Product? Get(uint id)
     {
         return products.Find(p => p.Id == id);
     }
 
-    public PagerPage<ProductModel> GetPage(int pageIndex, uint pageSize)
+    public PagerPage<Product> GetPage(int pageIndex, uint pageSize)
     {
         throw new NotImplementedException();
     }
 
-    public bool Update(ProductModel product)
+    public bool Update(Product product)
     {
         var index = products.FindIndex(p => p.Id == product.Id);
         products.Insert(index, product);

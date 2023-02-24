@@ -16,7 +16,7 @@ public class AddProduct
 
     public AddProduct()
     {
-        repository = new ProductRepositoryMock(new List<ProductModel>());
+        repository = new ProductRepositoryMock(new List<Product>());
         service = new ProductService(repository);
         controller = new(service);
     }
