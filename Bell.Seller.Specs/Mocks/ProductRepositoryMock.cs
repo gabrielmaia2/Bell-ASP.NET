@@ -1,8 +1,8 @@
 using Bell.Core.Domain.Models;
-using Bell.Products.Domain.Models;
-using Bell.Products.Domain.Repositories;
+using Bell.Seller.Domain.Models;
+using Bell.Seller.Domain.Repositories;
 
-namespace Bell.Products.Specs.Mocks;
+namespace Bell.Seller.Specs.Mocks;
 
 public class ProductRepositoryMock : IProductRepository
 {

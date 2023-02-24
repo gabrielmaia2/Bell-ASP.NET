@@ -18,6 +18,6 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Bell.Products\Bell.Products.csproj" />
+    <ProjectReference Include="..\Bell.Seller\Bell.Seller.csproj" />
   </ItemGroup>
 </Project>

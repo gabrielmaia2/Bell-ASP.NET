@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using Bell.Core.Domain.Repositories;
-using Bell.Products.Domain.Models;
+using Bell.Seller.Domain.Models;
 
-namespace Bell.Products.Domain.Repositories;
+namespace Bell.Seller.Domain.Repositories;
 
 public interface IProductRepository : IPager<ProductModel>
 {

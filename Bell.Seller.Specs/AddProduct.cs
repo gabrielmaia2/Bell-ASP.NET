@@ -1,10 +1,10 @@
-using Bell.Products.Controllers;
-using Bell.Products.Domain.Models;
-using Bell.Products.Domain.Repositories;
-using Bell.Products.Services;
-using Bell.Products.Specs.Mocks;
+using Bell.Seller.Controllers;
+using Bell.Seller.Domain.Models;
+using Bell.Seller.Domain.Repositories;
+using Bell.Seller.Services;
+using Bell.Seller.Specs.Mocks;
 
-namespace Bell.Products.Specs;
+namespace Bell.Seller.Specs;
 
 public class AddProduct
 {

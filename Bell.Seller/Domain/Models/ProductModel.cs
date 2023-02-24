@@ -1,4 +1,4 @@
-namespace Bell.Products.Domain.Models;
+namespace Bell.Seller.Domain.Models;
 
 public class ProductModel
 {

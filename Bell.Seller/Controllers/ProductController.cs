@@ -1,8 +1,8 @@
 using Bell.Core.Domain.Models;
-using Bell.Products.Services;
-using Bell.Products.ViewModels;
+using Bell.Seller.Services;
+using Bell.Seller.ViewModels;
 
-namespace Bell.Products.Controllers;
+namespace Bell.Seller.Controllers;
 
 public class ProductController
 {

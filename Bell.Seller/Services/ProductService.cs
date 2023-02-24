@@ -1,8 +1,8 @@
 using Bell.Core.Domain.Models;
-using Bell.Products.Domain.Models;
-using Bell.Products.Domain.Repositories;
+using Bell.Seller.Domain.Models;
+using Bell.Seller.Domain.Repositories;
 
-namespace Bell.Products.Services;
+namespace Bell.Seller.Services;
 
 public class ProductService
 {

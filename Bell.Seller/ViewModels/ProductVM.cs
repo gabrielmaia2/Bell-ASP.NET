@@ -1,6 +1,6 @@
-using Bell.Products.Domain.Models;
+using Bell.Seller.Domain.Models;
 
-namespace Bell.Products.ViewModels;
+namespace Bell.Seller.ViewModels;
 
 public class ProductVM
 {
