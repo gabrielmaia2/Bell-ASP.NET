@@ -30,11 +30,6 @@ public class ProductRepositoryMock : IProductRepository
         return products.Find(p => p.Id == id);
     }
 
-    public PagerPage<Product> GetPage(int pageIndex, uint pageSize)
-    {
-        throw new NotImplementedException();
-    }
-
     public bool Update(Product product)
     {
         var index = products.FindIndex(p => p.Id == product.Id);

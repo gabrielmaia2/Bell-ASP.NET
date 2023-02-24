@@ -12,10 +12,4 @@ public class ProductController
     {
         this.service = service;
     }
-
-    public PagerPage<ProductVM> Search(string search, uint pageIndex)
-    {
-        var oldPage = service.Search(search, pageIndex);
-        return PagerPage<ProductVM>.Clone(oldPage.Data.Select(p => new ProductVM(p)).ToList().AsReadOnly(), oldPage);
-    }
 }
