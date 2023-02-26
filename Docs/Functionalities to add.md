@@ -1,4 +1,4 @@
-## Functionalities to add
+# Functionalities to add
 
 Seller
 
