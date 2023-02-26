@@ -1,0 +1,6 @@
+openapi: 3.1.0
+info:
+  title: Bell REST API
+  author: Gabriel Maia Gondim
+  version: 0.0.1
+paths: {}
