@@ -2,7 +2,7 @@
 
 Seller
 
-- Add product
+- Publish product
 - Update product
 - Delete product
 - View all products added
