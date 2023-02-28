@@ -1,4 +1,3 @@
-using Bell.Core.Domain.Models;
 using Bell.Seller.Domain.Models;
 using Bell.Seller.Domain.Repositories;
 
@@ -13,5 +12,25 @@ public class ProductService
     public ProductService(IProductRepository repository)
     {
         this.repository = repository;
+    }
+
+    public Product? Get(ulong id)
+    {
+        return repository.Get(id);
+    }
+
+    public Product Publish(NewProduct product)
+    {
+        return repository.Add(product);
+    }
+
+    public Product Edit(Product product)
+    {
+        return repository.Update(product);
+    }
+
+    public Product Delete(ulong id)
+    {
+        return repository.Delete(id);
     }
 }

@@ -4,11 +4,11 @@ namespace Bell.Seller.Domain.Repositories;
 
 public interface IProductRepository
 {
-    Product? Get(uint id);
+    Product? Get(ulong id);
 
-    bool Add(Product product);
+    Product Add(NewProduct product);
 
-    bool Update(Product product);
+    Product Update(Product product);
 
-    bool Delete(uint id);
+    Product Delete(ulong id);
 }

@@ -13,28 +13,30 @@ public class ProductRepositoryMock : IProductRepository
         this.products = products;
     }
 
-    public bool Add(Product product)
+    public Product Add(NewProduct product)
     {
-        products.Add(product);
-        return true;
+        products.Add(new Product(product));
+        return new Product(product);
     }
 
-    public bool Delete(uint id)
+    public Product Delete(ulong id)
     {
-        products.RemoveAll(p => p.Id == id);
-        return true;
+        var i = products.FindIndex(p => p.Id == id);
+        var product = products[i];
+        products.RemoveAt(i);
+        return product;
     }
 
-    public Product? Get(uint id)
+    public Product? Get(ulong id)
     {
         return products.Find(p => p.Id == id);
     }
 
-    public bool Update(Product product)
+    public Product Update(Product product)
     {
         var index = products.FindIndex(p => p.Id == product.Id);
         products.Insert(index, product);
         products.RemoveAt(index + 1);
-        return true;
+        return product;
     }
 }
