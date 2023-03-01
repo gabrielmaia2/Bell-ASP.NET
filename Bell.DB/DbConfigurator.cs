@@ -13,6 +13,7 @@ public static class DbConfigurator
 {
     public static void ConfigureBuilderDB(WebApplicationBuilder builder)
     {
+        // Uses SQLite in development.
         if (builder.Environment.IsDevelopment())
         {
             builder.Services.AddDbContext<BellContext>(options =>
@@ -36,7 +37,7 @@ public static class DbConfigurator
     {
         if (app.Environment.IsDevelopment())
         {
-            // NOTE Comes from Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.
+            // Comes from Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.
             // That NuGet package provides middleware for EF Core error pages to detect and diagnose errors with migrations.
             app.UseMigrationsEndPoint();
         }
