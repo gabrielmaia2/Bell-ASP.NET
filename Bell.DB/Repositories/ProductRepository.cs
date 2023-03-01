@@ -1,4 +1,5 @@
 using Bell.Core.Domain.Models;
+using Bell.DB.Data;
 using Bell.Seller.Domain.Models;
 using Bell.Seller.Domain.Repositories;
 
@@ -6,6 +7,13 @@ namespace Bell.DB.Repositories;
 
 public class ProductRepository : IProductRepository
 {
+    private readonly BellContext context;
+
+    public ProductRepository(BellContext context)
+    {
+        this.context = context;
+    }
+
     public Product? Get(ulong id)
     {
         throw new NotImplementedException();

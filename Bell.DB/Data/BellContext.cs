@@ -12,8 +12,8 @@ public class BellContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<ProductDB>().ToTable("products");
+        modelBuilder.Entity<ProductDB>().ToTable("Product");
     }
 
-    public DbSet<ProductDB> Students { get; set; }
+    public DbSet<ProductDB> Products { get; set; }
 }

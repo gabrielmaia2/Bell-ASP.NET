@@ -28,6 +28,8 @@ public class ProductDB
     [Column("price", Order = 3)]
     public decimal Price { get; init; }
 
+    public ProductDB() { }
+
     public ProductDB(Product product)
     {
         Id = product.Id;
