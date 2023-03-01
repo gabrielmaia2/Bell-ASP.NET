@@ -1,0 +1,31 @@
+﻿@page
+@model Bell.Web.Pages.Seller.Products.PublishModel
+@{
+}
+
+<h1>Create a new product</h1>
+
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label for="Model"></label>
+    </div>
+    <div class="form-group">
+        <label asp-for="NewProduct.Name" class="control-label"></label>
+        <input asp-for="NewProduct.Name" class="form-control" />
+        <span asp-validation-for="NewProduct.Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="NewProduct.Description" class="control-label"></label>
+        <input asp-for="NewProduct.Description" class="form-control" />
+        <span asp-validation-for="NewProduct.Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="NewProduct.Price" class="control-label"></label>
+        <input asp-for="NewProduct.Price" class="form-control" />
+        <span asp-validation-for="NewProduct.Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>

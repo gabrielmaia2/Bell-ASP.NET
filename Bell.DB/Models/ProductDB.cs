@@ -20,6 +20,8 @@ public class ProductDB
     [MaxLength(5000)]
     [Unicode(true)]
     [Column("description", Order = 2)]
+    [Required(AllowEmptyStrings = true)]
+    [DisplayFormat(ConvertEmptyStringToNull = false)]
     public string Description { get; init; } = "";
 
     [Precision(10, 2)]
