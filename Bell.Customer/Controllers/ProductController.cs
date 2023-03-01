@@ -16,6 +16,6 @@ public class ProductController
     public Page<ProductVM> Search(string search, uint pageIndex)
     {
         var oldPage = service.Search(search, pageIndex);
-        return Page<ProductVM>.Clone(oldPage.Data.Select(p => new ProductVM(p)).ToList().AsReadOnly(), oldPage);
+        return oldPage.Clone(p => new ProductVM(p));
     }
 }

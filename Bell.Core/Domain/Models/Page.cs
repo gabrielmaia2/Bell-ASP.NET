@@ -61,6 +61,11 @@ public class Page<T>
     public uint? NextPage => HasNext ? CurrentPage + 1 : null;
 
     /// <summary>
+    /// Creates an empty query page.
+    /// </summary>
+    public Page() : this(new List<T>()) { }
+
+    /// <summary>
     /// Creates a new query page.
     /// </summary>
     /// <param name="currentIndex">The index of the current page.</param>
@@ -75,19 +80,27 @@ public class Page<T>
     }
 
     /// <summary>
-    /// Clones a page changing only its contents.
+    /// Creates a copy from this page changing only its contents.
     /// </summary>
     /// <param name="data">The new content of the page.</param>
-    /// <param name="oldPage">The page to copy.</param>
-    /// <typeparam name="T2">The type of the old items.</typeparam>
+    /// <typeparam name="TNew">The type of the new items.</typeparam>
     /// <returns>A clone of the page with the new content.</returns>
-    public static Page<T> Clone<T2>(IReadOnlyCollection<T> data, Page<T2> oldPage)
+    public Page<TNew> Clone<TNew>(IReadOnlyCollection<TNew> data)
     {
-        return new Page<T>(
+        return new Page<TNew>(
             data,
-            oldPage.CurrentPage,
-            oldPage.PageSize,
-            oldPage.TotalItems
+            CurrentPage,
+            PageSize,
+            TotalItems
         );
     }
+
+    /// <summary>
+    /// Creates a copy from this page changing only its contents.
+    /// </summary>
+    /// <param name="mapFunc">The function that maps the old items to new ones.</param>
+    /// <typeparam name="TNew">The type of the new items.</typeparam>
+    /// <returns>A clone of the page with the new content.</returns>
+    public Page<TNew> Clone<TNew>(Func<T, TNew> mapFunc)
+        => Clone(Data.Select(mapFunc).ToList().AsReadOnly());
 }
