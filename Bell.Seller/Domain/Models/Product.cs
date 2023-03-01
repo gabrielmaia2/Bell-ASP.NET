@@ -20,4 +20,15 @@ public class Product
         Description = product.Description;
         Price = product.Price;
     }
+
+    public Product Copy()
+    {
+        return new Product()
+        {
+            Id = this.Id,
+            Name = this.Name,
+            Description = this.Description,
+            Price = this.Price
+        };
+    }
 }

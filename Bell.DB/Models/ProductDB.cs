@@ -10,27 +10,45 @@ public class ProductDB
 {
     [Key]
     [Column("id", Order = 0)]
-    public ulong Id { get; init; }
+    public ulong Id { get; set; }
 
     [MaxLength(200)]
     [Unicode(true)]
     [Column("name", Order = 1)]
-    public string Name { get; init; } = "";
+    public string Name { get; set; } = "";
 
     [MaxLength(5000)]
     [Unicode(true)]
     [Column("description", Order = 2)]
     [Required(AllowEmptyStrings = true)]
     [DisplayFormat(ConvertEmptyStringToNull = false)]
-    public string Description { get; init; } = "";
+    public string Description { get; set; } = "";
 
     [Precision(10, 2)]
     [Column("price", Order = 3)]
-    public decimal Price { get; init; }
+    public decimal Price { get; set; }
 
     public ProductDB() { }
 
+    public ProductDB(NewProduct product) : this(new Product(product)) { }
+
     public ProductDB(Product product)
+    {
+        SetFrom(product);
+    }
+
+    public Product AsProduct()
+    {
+        return new Product()
+        {
+            Id = this.Id,
+            Name = this.Name,
+            Description = this.Description,
+            Price = this.Price,
+        };
+    }
+
+    public void SetFrom(Product product)
     {
         Id = product.Id;
         Name = product.Name;

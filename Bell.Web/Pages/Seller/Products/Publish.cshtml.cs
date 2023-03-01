@@ -30,7 +30,7 @@ namespace Bell.Web.Pages.Seller.Products
 
             var product = controller.Publish(NewProduct.AsModel());
 
-            return RedirectToAction("View", new { id = product.Id });
+            return RedirectToPage("View", new { id = product.Id });
         }
     }
 }

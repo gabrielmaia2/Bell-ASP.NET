@@ -1,5 +1,7 @@
+using Bell.Core.Domain.Exceptions;
 using Bell.Core.Domain.Models;
 using Bell.DB.Data;
+using Bell.DB.Models;
 using Bell.Seller.Domain.Models;
 using Bell.Seller.Domain.Repositories;
 
@@ -16,22 +18,38 @@ public class ProductRepository : IProductRepository
 
     public Product? Get(ulong id)
     {
-        throw new NotImplementedException();
+        return context.Products.Find(id)?.AsProduct().Copy();
     }
 
     public Product Add(NewProduct product)
     {
-        throw new NotImplementedException();
+        var entity = context.Products.Add(new ProductDB(product)).Entity;
+        context.SaveChanges();
+        return entity.AsProduct();
     }
 
     public Product Update(Product product)
     {
-        throw new NotImplementedException();
+        var entity = context.Products.Find(product.Id);
+
+        if (entity == null) throw new NotFoundException("Product");
+
+        entity.SetFrom(product);
+        context.SaveChanges();
+        return entity.AsProduct();
     }
 
     public Product Delete(ulong id)
     {
-        throw new NotImplementedException();
+        var entity = context.Products.Find(id);
+
+        if (entity == null) throw new NotFoundException("Product");
+
+        var res = entity.AsProduct();
+        context.Products.Remove(entity);
+        context.SaveChanges();
+
+        return res;
     }
 
     // public PagerPage<Product> GetPage(int pageIndex, uint pageSize)
