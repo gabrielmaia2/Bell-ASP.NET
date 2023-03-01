@@ -1,0 +1,16 @@
+﻿@page
+@model Bell.Web.Pages.Seller.Products.ViewModel
+@{
+}
+
+<div>
+    <div class="">
+        @Model.Product.Name
+    </div>
+    <div class="">
+        @Model.Product.Description
+    </div>
+    <div class="">
+        @($"{Model.Product.Price:C2}")
+    </div>
+</div>
