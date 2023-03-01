@@ -13,18 +13,9 @@ public class ProductRepositoryMock : IProductRepository
         this.products = products;
     }
 
-    public Product Add(NewProduct product)
+    public Page<Product> SearchOwnProducts(string search, uint currentPage, uint pageSize)
     {
-        products.Add(new Product(product));
-        return new Product(product);
-    }
-
-    public Product Delete(ulong id)
-    {
-        var i = products.FindIndex(p => p.Id == id);
-        var product = products[i];
-        products.RemoveAt(i);
-        return product;
+        throw new NotImplementedException();
     }
 
     public Product? GetOwnProduct(ulong id)
@@ -32,11 +23,25 @@ public class ProductRepositoryMock : IProductRepository
         return products.Find(p => p.Id == id);
     }
 
+    public Product Add(NewProduct product)
+    {
+        products.Add(new Product(product));
+        return new Product(product);
+    }
+
     public Product Update(Product product)
     {
         var index = products.FindIndex(p => p.Id == product.Id);
         products.Insert(index, product);
         products.RemoveAt(index + 1);
+        return product;
+    }
+
+    public Product Delete(ulong id)
+    {
+        var i = products.FindIndex(p => p.Id == id);
+        var product = products[i];
+        products.RemoveAt(i);
         return product;
     }
 }

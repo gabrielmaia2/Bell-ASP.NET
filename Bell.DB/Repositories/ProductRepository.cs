@@ -4,6 +4,7 @@ using Bell.DB.Data;
 using Bell.DB.Models;
 using Bell.Seller.Domain.Models;
 using Bell.Seller.Domain.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace Bell.DB.Repositories;
 
@@ -14,6 +15,17 @@ public class ProductRepository : IProductRepository
     public ProductRepository(BellContext context)
     {
         this.context = context;
+    }
+
+    public Page<Product> SearchOwnProducts(string search, uint currentPage, uint pageSize)
+    {
+        var res = context.Products
+            .Where(p => EF.Functions.Like(p.Name, $"{search}%"))
+            .OrderBy(p => p.Id)
+            .Skip((int)(currentPage * pageSize))
+            .Take((int)pageSize)
+            .Select(p => p.AsProduct());
+        return new Page<Product>(res.ToList().AsReadOnly(), currentPage, pageSize, (uint)res.Count());
     }
 
     public Product? GetOwnProduct(ulong id)

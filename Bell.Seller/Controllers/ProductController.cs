@@ -1,3 +1,4 @@
+using Bell.Core.Domain.Models;
 using Bell.Seller.Domain.Models;
 using Bell.Seller.Services;
 
@@ -10,6 +11,11 @@ public class ProductController
     public ProductController(ProductService service)
     {
         this.service = service;
+    }
+
+    public Page<Product> SearchOwnProducts(string search, uint currentPage, uint pageSize)
+    {
+        return service.SearchOwnProducts(search, currentPage, pageSize);
     }
 
     public Product? GetOwnProduct(ulong id)

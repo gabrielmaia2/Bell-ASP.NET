@@ -1,10 +1,20 @@
 using Bell.Seller.Domain.Models;
 using Bell.Core.Domain.Exceptions;
+using Bell.Core.Domain.Models;
 
 namespace Bell.Seller.Domain.Repositories;
 
 public interface IProductRepository
 {
+    /// <summary>
+    /// Searches in all products owned by the current user.
+    /// </summary>
+    /// <param name="search">The string to search in product names and descriptions.</param>
+    /// <param name="currentPage">The current page in the search.</param>
+    /// <param name="pageSize">The size of each page.</param>
+    /// <returns>The current page for this search.</returns>
+    public Page<Product> SearchOwnProducts(string search, uint currentPage, uint pageSize);
+
     /// <summary>
     /// Gets a product owned by the current user by its id.
     /// </summary>

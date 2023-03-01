@@ -1,0 +1,31 @@
+﻿@page
+@model Bell.Web.Pages.Seller.Products.IndexModel
+@{
+}
+<form method="post">
+    <div class="row">
+        <div class="form-group col">
+            <label asp-for="Search" class="control-label d-hide">Search Products</label>
+            <input asp-for="Search" class="form-control col" placeholder="Search..." />
+        </div>
+        <div class="form-group col">
+            <input type="submit" value="Search" class="btn btn-primary" />
+        </div>
+    </div>
+</form>
+
+<div class="container">
+    @foreach (var row in Model.Rows)
+    {
+        <div class="row">
+            @foreach (var item in row)
+            {
+                <div class="col">
+                    @item.Name
+                    @item.Description
+                    @item.Price
+                </div>
+            }
+        </div>
+    }
+</div>

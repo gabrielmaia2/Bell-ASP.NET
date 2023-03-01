@@ -1,3 +1,4 @@
+using Bell.Core.Domain.Models;
 using Bell.Seller.Domain.Models;
 using Bell.Seller.Domain.Repositories;
 
@@ -7,11 +8,14 @@ public class ProductService
 {
     private readonly IProductRepository repository;
 
-    public uint PageSize { get; set; }
-
     public ProductService(IProductRepository repository)
     {
         this.repository = repository;
+    }
+
+    public Page<Product> SearchOwnProducts(string search, uint currentPage, uint pageSize)
+    {
+        return repository.SearchOwnProducts(search, currentPage, pageSize);
     }
 
     public Product? GetOwnProduct(ulong id)
