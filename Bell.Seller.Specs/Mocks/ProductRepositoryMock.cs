@@ -27,7 +27,7 @@ public class ProductRepositoryMock : IProductRepository
         return product;
     }
 
-    public Product? Get(ulong id)
+    public Product? GetOwnProduct(ulong id)
     {
         return products.Find(p => p.Id == id);
     }

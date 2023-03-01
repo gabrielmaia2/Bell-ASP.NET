@@ -14,9 +14,9 @@ public class ProductService
         this.repository = repository;
     }
 
-    public Product? Get(ulong id)
+    public Product? GetOwnProduct(ulong id)
     {
-        return repository.Get(id);
+        return repository.GetOwnProduct(id);
     }
 
     public Product Publish(NewProduct product)

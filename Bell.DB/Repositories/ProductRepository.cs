@@ -16,7 +16,7 @@ public class ProductRepository : IProductRepository
         this.context = context;
     }
 
-    public Product? Get(ulong id)
+    public Product? GetOwnProduct(ulong id)
     {
         return context.Products.Find(id)?.AsProduct().Copy();
     }

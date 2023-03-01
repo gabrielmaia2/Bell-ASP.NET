@@ -12,9 +12,9 @@ public class ProductController
         this.service = service;
     }
 
-    public Product? Get(ulong id)
+    public Product? GetOwnProduct(ulong id)
     {
-        return service.Get(id);
+        return service.GetOwnProduct(id);
     }
 
     public Product Publish(NewProduct product)

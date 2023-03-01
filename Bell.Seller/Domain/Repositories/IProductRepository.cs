@@ -6,11 +6,11 @@ namespace Bell.Seller.Domain.Repositories;
 public interface IProductRepository
 {
     /// <summary>
-    /// Gets a product by its id.
+    /// Gets a product owned by the current user by its id.
     /// </summary>
     /// <param name="id">The id of the product to get.</param>
     /// <returns>The product with the specified id or null if it does not exist.</returns>
-    Product? Get(ulong id);
+    Product? GetOwnProduct(ulong id);
 
     /// <summary>
     /// Adds a new product.
