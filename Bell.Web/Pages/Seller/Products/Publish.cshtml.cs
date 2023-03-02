@@ -21,14 +21,14 @@ namespace Bell.Web.Pages.Seller.Products
         {
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(CancellationToken ct)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            var product = controller.Publish(NewProduct.AsModel());
+            var product = await controller.Publish(NewProduct.AsModel(), ct);
 
             return RedirectToPage("View", new { id = product.Id });
         }

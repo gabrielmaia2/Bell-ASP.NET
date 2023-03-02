@@ -13,28 +13,28 @@ public class ProductController
         this.service = service;
     }
 
-    public Page<Product> SearchOwnProducts(string search, uint currentPage, uint pageSize)
+    public async Task<Page<Product>> SearchOwnProducts(string search, uint currentPage, uint pageSize, CancellationToken ct)
     {
-        return service.SearchOwnProducts(search, currentPage, pageSize);
+        return await service.SearchOwnProducts(search, currentPage, pageSize, ct);
     }
 
-    public Product? GetOwnProduct(ulong id)
+    public async Task<Product?> GetOwnProduct(ulong id, CancellationToken ct)
     {
-        return service.GetOwnProduct(id);
+        return await service.GetOwnProduct(id, ct);
     }
 
-    public Product Publish(NewProduct product)
+    public async Task<Product> Publish(NewProduct product, CancellationToken ct)
     {
-        return service.Publish(product);
+        return await service.Publish(product, ct);
     }
 
-    public Product Edit(Product product)
+    public async Task<Product> Edit(Product product, CancellationToken ct)
     {
-        return service.Edit(product);
+        return await service.Edit(product, ct);
     }
 
-    public Product Delete(ulong id)
+    public async Task<Product> Delete(ulong id, CancellationToken ct)
     {
-        return service.Delete(id);
+        return await service.Delete(id, ct);
     }
 }

@@ -24,19 +24,19 @@ namespace Bell.Web.Pages.Seller.Products
             this.controller = controller;
         }
 
-        public async Task<IActionResult> OnGetAsync()
+        public async Task<IActionResult> OnGetAsync(CancellationToken ct)
         {
-            return await DoSearchAsync(0);
+            return await DoSearchAsync(0, ct);
         }
 
-        public async Task<IActionResult> OnPostAsync(uint pageIndex)
+        public async Task<IActionResult> OnPostAsync(uint pageIndex, CancellationToken ct)
         {
-            return await DoSearchAsync(pageIndex);
+            return await DoSearchAsync(pageIndex, ct);
         }
 
-        private async Task<IActionResult> DoSearchAsync(uint pageIndex)
+        private async Task<IActionResult> DoSearchAsync(uint pageIndex, CancellationToken ct)
         {
-            CurrentPage = controller.SearchOwnProducts(Search, pageIndex, 25).Clone(p => new Product(p));
+            CurrentPage = (await controller.SearchOwnProducts(Search, pageIndex, 25, ct)).Clone(p => new Product(p));
             Rows = CurrentPage.Data.Chunk(RowSize);
             return Page();
         }

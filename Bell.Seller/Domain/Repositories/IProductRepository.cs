@@ -13,21 +13,21 @@ public interface IProductRepository
     /// <param name="currentPage">The current page in the search.</param>
     /// <param name="pageSize">The size of each page.</param>
     /// <returns>The current page for this search.</returns>
-    public Page<Product> SearchOwnProducts(string search, uint currentPage, uint pageSize);
+    Task<Page<Product>> SearchOwnProducts(string search, uint currentPage, uint pageSize, CancellationToken ct);
 
     /// <summary>
     /// Gets a product owned by the current user by its id.
     /// </summary>
     /// <param name="id">The id of the product to get.</param>
     /// <returns>The product with the specified id or null if it does not exist.</returns>
-    Product? GetOwnProduct(ulong id);
+    Task<Product?> GetOwnProduct(ulong id, CancellationToken ct);
 
     /// <summary>
     /// Adds a new product.
     /// </summary>
     /// <param name="product">The new product to add.</param>
     /// <returns>The product added to the database.</returns>
-    Product Add(NewProduct product);
+    Task<Product> Add(NewProduct product, CancellationToken ct);
 
     /// <summary>
     /// Updates the product specified by its id.
@@ -35,7 +35,7 @@ public interface IProductRepository
     /// <param name="product">The product with the updated values.</param>
     /// <returns>The product added to the database.</returns>
     /// <exception cref="NotFoundException">When there is no product with the id specified to update.</exception>
-    Product Update(Product product);
+    Task<Product> Update(Product product, CancellationToken ct);
 
     /// <summary>
     /// Deletes the product specified by its id.
@@ -43,5 +43,5 @@ public interface IProductRepository
     /// <param name="id">The id of the product to delete.</param>
     /// <returns>The product removed from the database.</returns>
     /// <exception cref="NotFoundException">When there is no product with the id specified to delete.</exception>
-    Product Delete(ulong id);
+    Task<Product> Delete(ulong id, CancellationToken ct);
 }

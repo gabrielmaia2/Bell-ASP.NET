@@ -13,28 +13,28 @@ public class ProductService
         this.repository = repository;
     }
 
-    public Page<Product> SearchOwnProducts(string search, uint currentPage, uint pageSize)
+    public async Task<Page<Product>> SearchOwnProducts(string search, uint currentPage, uint pageSize, CancellationToken ct)
     {
-        return repository.SearchOwnProducts(search, currentPage, pageSize);
+        return await repository.SearchOwnProducts(search, currentPage, pageSize, ct);
     }
 
-    public Product? GetOwnProduct(ulong id)
+    public async Task<Product?> GetOwnProduct(ulong id, CancellationToken ct)
     {
-        return repository.GetOwnProduct(id);
+        return await repository.GetOwnProduct(id, ct);
     }
 
-    public Product Publish(NewProduct product)
+    public async Task<Product> Publish(NewProduct product, CancellationToken ct)
     {
-        return repository.Add(product);
+        return await repository.Add(product, ct);
     }
 
-    public Product Edit(Product product)
+    public async Task<Product> Edit(Product product, CancellationToken ct)
     {
-        return repository.Update(product);
+        return await repository.Update(product, ct);
     }
 
-    public Product Delete(ulong id)
+    public async Task<Product> Delete(ulong id, CancellationToken ct)
     {
-        return repository.Delete(id);
+        return await repository.Delete(id, ct);
     }
 }

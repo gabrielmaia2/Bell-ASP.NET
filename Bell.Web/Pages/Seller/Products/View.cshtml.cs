@@ -18,9 +18,9 @@ namespace Bell.Web.Pages.Seller.Products
             this.controller = controller;
         }
 
-        public async Task<IActionResult> OnGetAsync(ulong id = 0)
+        public async Task<IActionResult> OnGetAsync(ulong id, CancellationToken ct)
         {
-            var product = controller.GetOwnProduct(id);
+            var product = await controller.GetOwnProduct(id, ct);
             if (product == null)
                 return NotFound();
 
@@ -28,11 +28,11 @@ namespace Bell.Web.Pages.Seller.Products
             return Page();
         }
 
-        public async Task<IActionResult> OnPostDeleteAsync(ulong id)
+        public async Task<IActionResult> OnPostDeleteAsync(ulong id, CancellationToken ct)
         {
             try
             {
-                controller.Delete(id);
+                await controller.Delete(id, ct);
             }
             catch (NotFoundException)
             {

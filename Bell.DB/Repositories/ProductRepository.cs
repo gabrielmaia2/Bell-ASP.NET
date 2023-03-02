@@ -17,7 +17,7 @@ public class ProductRepository : IProductRepository
         this.context = context;
     }
 
-    public Page<Product> SearchOwnProducts(string search, uint currentPage, uint pageSize)
+    public async Task<Page<Product>> SearchOwnProducts(string search, uint currentPage, uint pageSize, CancellationToken ct)
     {
         var res = context.Products
             .Where(p => EF.Functions.Like(p.Name, $"{search}%"))
@@ -25,41 +25,45 @@ public class ProductRepository : IProductRepository
             .Skip((int)(currentPage * pageSize))
             .Take((int)pageSize)
             .Select(p => p.AsProduct());
-        return new Page<Product>(res.ToList().AsReadOnly(), currentPage, pageSize, (uint)res.Count());
+
+        var content = await res.ToListAsync(ct);
+        return new Page<Product>(content.AsReadOnly(), currentPage, pageSize, (uint)content.Count());
     }
 
-    public Product? GetOwnProduct(ulong id)
+    public async Task<Product?> GetOwnProduct(ulong id, CancellationToken ct)
     {
-        return context.Products.Find(id)?.AsProduct().Copy();
+        var productDB = await context.Products.FindAsync(id, ct);
+        return productDB?.AsProduct().Copy();
     }
 
-    public Product Add(NewProduct product)
+    public async Task<Product> Add(NewProduct product, CancellationToken ct)
     {
-        var entity = context.Products.Add(new ProductDB(product)).Entity;
-        context.SaveChanges();
-        return entity.AsProduct();
+        var entity = await context.Products.AddAsync(new ProductDB(product), ct);
+        var productDB = entity.Entity;
+        await context.SaveChangesAsync(ct);
+        return productDB.AsProduct();
     }
 
-    public Product Update(Product product)
+    public async Task<Product> Update(Product product, CancellationToken ct)
     {
-        var entity = context.Products.Find(product.Id);
+        var entity = await context.Products.FindAsync(product.Id, ct);
 
         if (entity == null) throw new NotFoundException("Product");
 
         entity.SetFrom(product);
-        context.SaveChanges();
+        await context.SaveChangesAsync(ct);
         return entity.AsProduct();
     }
 
-    public Product Delete(ulong id)
+    public async Task<Product> Delete(ulong id, CancellationToken ct)
     {
-        var entity = context.Products.Find(id);
+        var entity = await context.Products.FindAsync(id, ct);
 
         if (entity == null) throw new NotFoundException("Product");
 
         var res = entity.AsProduct();
         context.Products.Remove(entity);
-        context.SaveChanges();
+        await context.SaveChangesAsync(ct);
 
         return res;
     }
