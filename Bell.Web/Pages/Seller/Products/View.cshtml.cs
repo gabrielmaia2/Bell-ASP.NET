@@ -36,7 +36,6 @@ namespace Bell.Web.Pages.Seller.Products
             }
             catch (NotFoundException)
             {
-                System.Console.WriteLine("aaaaaa");
                 return NotFound();
             }
 

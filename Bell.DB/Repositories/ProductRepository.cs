@@ -67,9 +67,4 @@ public class ProductRepository : IProductRepository
 
         return res;
     }
-
-    // public PagerPage<Product> GetPage(int pageIndex, uint pageSize)
-    // {
-    //     throw new NotImplementedException();
-    // }
 }

@@ -17,7 +17,7 @@ namespace Bell.Web.Pages.Seller.Products
 
         public int RowSize => 5;
 
-        public IEnumerable<Product?[]> Rows { get; set; }
+        public IEnumerable<Product?[]> Rows { get; set; } = new List<Product?[]>();
 
         public IndexModel(ProductController controller)
         {

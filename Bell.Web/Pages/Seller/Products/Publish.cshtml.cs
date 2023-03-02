@@ -10,7 +10,7 @@ namespace Bell.Web.Pages.Seller.Products
         private readonly ProductController controller;
 
         [BindProperty]
-        public NewProduct NewProduct { get; set; }
+        public NewProduct NewProduct { get; set; } = new();
 
         public PublishModel(ProductController controller)
         {
