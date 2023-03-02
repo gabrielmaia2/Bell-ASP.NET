@@ -18,14 +18,20 @@
     @foreach (var row in Model.Rows)
     {
         <div class="row">
-            @foreach (var item in row)
+            @* Foreach is not used here because in the last row, if the row is not full, *@
+            @* the last items will be empty to occupy the grid layout *@
+            @for (int i = 0; i < Model.RowSize; i++)
             {
+                var item = row.ElementAtOrDefault(i);
                 <div class="col d-flex flex-column">
-                    <div>
-                        <a asp-page="View" asp-route-id=@item.Id>@item.Name</a>
-                    </div>
-                    <div>@item.Price</div>
-                    <div>@item.Description</div>
+                    @if (item != null)
+                    {
+                        <div>
+                            <a asp-page="View" asp-route-id=@item.Id>@item.Name</a>
+                        </div>
+                        <div>@item.Price</div>
+                        <div>@item.Description</div>
+                    }
                 </div>
             }
         </div>
