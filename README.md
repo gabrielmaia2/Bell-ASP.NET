@@ -6,4 +6,7 @@ I made this project to learn and show my skills with ASP.NET Core and Entity Fra
 
 Software specifications are in [this Trello link](https://trello.com/b/ckPzBEIu/bell-e-commerce).
 
+Stack for this project:
 
+- ASP.NET Core;
+- Entity Framework Core;
