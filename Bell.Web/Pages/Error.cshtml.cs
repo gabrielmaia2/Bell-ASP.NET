@@ -1,4 +1,6 @@
 using System.Diagnostics;
+using System.Net;
+using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -8,6 +10,10 @@ namespace Bell.Web.Pages;
 [IgnoreAntiforgeryToken]
 public class ErrorModel : PageModel
 {
+    public ushort? Code { get; set; }
+
+    public string? ErrorMessage { get; set; }
+
     public string? RequestId { get; set; }
 
     public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
@@ -19,8 +25,14 @@ public class ErrorModel : PageModel
         _logger = logger;
     }
 
-    public void OnGet()
+    public void OnGet(ushort? code)
     {
+        Code = code;
+
+        // Gets status code message and splits it (e.g. "BadRequest" becomes "Bad Request").
+        var err = ((HttpStatusCode?)code)?.ToString();
+        ErrorMessage = err == null ? null : String.Join(' ', Regex.Replace(err, @"([A-Z0-9])", @" $1"));
+
         RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
     }
 }
