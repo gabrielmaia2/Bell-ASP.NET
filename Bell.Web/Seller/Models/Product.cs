@@ -15,6 +15,8 @@ public class Product
 
     public decimal Price { get; init; }
 
+    public Product() : this(new ProductModel()) { }
+
     public Product(ProductModel product)
     {
         Id = product.Id;

@@ -1,3 +1,4 @@
+using Bell.Core.Domain.Exceptions;
 using Bell.Seller.Controllers;
 using Bell.Web.Seller.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -25,6 +26,21 @@ namespace Bell.Web.Pages.Seller.Products
 
             Product = new Product(product);
             return Page();
+        }
+
+        public async Task<IActionResult> OnPostDeleteAsync(ulong id)
+        {
+            try
+            {
+                controller.Delete(id);
+            }
+            catch (NotFoundException)
+            {
+                System.Console.WriteLine("aaaaaa");
+                return NotFound();
+            }
+
+            return RedirectToPagePermanent("Index");
         }
     }
 }
