@@ -13,28 +13,28 @@ public class ProductController
         this.service = service;
     }
 
-    public async Task<Page<Product>> SearchOwnProducts(string search, uint currentPage, uint pageSize, CancellationToken ct)
+    public async Task<Page<Product>> SearchOwnProductsAsync(string search, uint currentPage, uint pageSize, CancellationToken ct)
     {
-        return await service.SearchOwnProducts(search, currentPage, pageSize, ct);
+        return await service.SearchOwnProductsAsync(search, currentPage, pageSize, ct);
     }
 
-    public async Task<Product?> GetOwnProduct(ulong id, CancellationToken ct)
+    public async Task<Product?> GetOwnProductAsync(ulong id, CancellationToken ct)
     {
-        return await service.GetOwnProduct(id, ct);
+        return await service.GetOwnProductAsync(id, ct);
     }
 
-    public async Task<Product> Publish(NewProduct product, CancellationToken ct)
+    public async Task<Product> PublishAsync(NewProduct product, CancellationToken ct)
     {
-        return await service.Publish(product, ct);
+        return await service.PublishAsync(product, ct);
     }
 
-    public async Task<Product> Edit(UpdateProduct product, CancellationToken ct)
+    public async Task<Product> EditAsync(UpdateProduct product, CancellationToken ct)
     {
-        return await service.Edit(product, ct);
+        return await service.EditAsync(product, ct);
     }
 
-    public async Task<Product> Delete(ulong id, CancellationToken ct)
+    public async Task<Product> DeleteAsync(ulong id, CancellationToken ct)
     {
-        return await service.Delete(id, ct);
+        return await service.DeleteAsync(id, ct);
     }
 }

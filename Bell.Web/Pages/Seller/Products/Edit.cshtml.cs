@@ -20,7 +20,7 @@ namespace Bell.Web.Pages.Seller.Products
 
         public async Task<IActionResult> OnGetAsync(ulong id, CancellationToken ct)
         {
-            var product = await controller.GetOwnProduct(id, ct);
+            var product = await controller.GetOwnProductAsync(id, ct);
             if (product == null)
                 return NotFound();
 
@@ -32,7 +32,7 @@ namespace Bell.Web.Pages.Seller.Products
         {
             try
             {
-                await controller.Edit(Product.AsUpdateProduct(), ct);
+                await controller.EditAsync(Product.AsUpdateProduct(), ct);
             }
             catch (NotFoundException)
             {

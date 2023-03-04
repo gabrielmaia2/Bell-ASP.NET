@@ -28,7 +28,7 @@ namespace Bell.Web.Pages.Seller.Products
                 return Page();
             }
 
-            var product = await controller.Publish(NewProduct.AsModel(), ct);
+            var product = await controller.PublishAsync(NewProduct.AsModel(), ct);
 
             return RedirectToPage("View", new { id = product.Id });
         }

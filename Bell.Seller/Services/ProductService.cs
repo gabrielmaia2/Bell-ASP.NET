@@ -13,28 +13,28 @@ public class ProductService
         this.repository = repository;
     }
 
-    public async Task<Page<Product>> SearchOwnProducts(string search, uint currentPage, uint pageSize, CancellationToken ct)
+    public async Task<Page<Product>> SearchOwnProductsAsync(string search, uint currentPage, uint pageSize, CancellationToken ct)
     {
-        return await repository.SearchOwnProducts(search, currentPage, pageSize, ct);
+        return await repository.SearchOwnProductsAsync(search, currentPage, pageSize, ct);
     }
 
-    public async Task<Product?> GetOwnProduct(ulong id, CancellationToken ct)
+    public async Task<Product?> GetOwnProductAsync(ulong id, CancellationToken ct)
     {
-        return await repository.GetOwnProduct(id, ct);
+        return await repository.GetOwnProductAsync(id, ct);
     }
 
-    public async Task<Product> Publish(NewProduct product, CancellationToken ct)
+    public async Task<Product> PublishAsync(NewProduct product, CancellationToken ct)
     {
-        return await repository.Add(product, ct);
+        return await repository.AddAsync(product, ct);
     }
 
-    public async Task<Product> Edit(UpdateProduct product, CancellationToken ct)
+    public async Task<Product> EditAsync(UpdateProduct product, CancellationToken ct)
     {
-        return await repository.Update(product, ct);
+        return await repository.UpdateAsync(product, ct);
     }
 
-    public async Task<Product> Delete(ulong id, CancellationToken ct)
+    public async Task<Product> DeleteAsync(ulong id, CancellationToken ct)
     {
-        return await repository.Delete(id, ct);
+        return await repository.DeleteAsync(id, ct);
     }
 }

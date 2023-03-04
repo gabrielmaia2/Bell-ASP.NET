@@ -36,7 +36,7 @@ namespace Bell.Web.Pages.Seller.Products
 
         private async Task<IActionResult> DoSearchAsync(uint pageIndex, CancellationToken ct)
         {
-            CurrentPage = (await controller.SearchOwnProducts(Search, pageIndex, 25, ct)).Clone(p => new Product(p));
+            CurrentPage = (await controller.SearchOwnProductsAsync(Search, pageIndex, 25, ct)).Clone(p => new Product(p));
             Rows = CurrentPage.Data.Chunk(RowSize);
             return Page();
         }
