@@ -10,3 +10,5 @@ Stack for this project:
 
 - ASP.NET Core;
 - Entity Framework Core;
+  - SQLite in development;
+  - SqlServer in production.
