@@ -34,7 +34,10 @@ public class ProductDB
 
     public ProductDB(Product product)
     {
-        SetFrom(product);
+        Id = product.Id;
+        Name = product.Name;
+        Description = product.Description;
+        Price = product.Price;
     }
 
     public Product AsProduct()
@@ -48,11 +51,15 @@ public class ProductDB
         };
     }
 
-    public void SetFrom(Product product)
+    public void SetFrom(UpdateProduct product)
     {
-        Id = product.Id;
-        Name = product.Name;
-        Description = product.Description;
-        Price = product.Price;
+        if (product.Id != null)
+            Id = (ulong)product.Id;
+        if (product.Name != null)
+            Name = product.Name;
+        if (product.Description != null)
+            Description = product.Description;
+        if (product.Price != null)
+            Price = (decimal)product.Price;
     }
 }

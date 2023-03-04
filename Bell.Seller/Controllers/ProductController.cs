@@ -28,7 +28,7 @@ public class ProductController
         return await service.Publish(product, ct);
     }
 
-    public async Task<Product> Edit(Product product, CancellationToken ct)
+    public async Task<Product> Edit(UpdateProduct product, CancellationToken ct)
     {
         return await service.Edit(product, ct);
     }

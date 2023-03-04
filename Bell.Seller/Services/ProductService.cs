@@ -28,7 +28,7 @@ public class ProductService
         return await repository.Add(product, ct);
     }
 
-    public async Task<Product> Edit(Product product, CancellationToken ct)
+    public async Task<Product> Edit(UpdateProduct product, CancellationToken ct)
     {
         return await repository.Update(product, ct);
     }

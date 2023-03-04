@@ -44,7 +44,7 @@ public class ProductRepository : IProductRepository
         return productDB.AsProduct();
     }
 
-    public async Task<Product> Update(Product product, CancellationToken ct)
+    public async Task<Product> Update(UpdateProduct product, CancellationToken ct)
     {
         var entity = await context.Products.FindAsync(product.Id, ct);
 

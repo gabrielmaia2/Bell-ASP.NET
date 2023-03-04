@@ -35,7 +35,7 @@ public interface IProductRepository
     /// <param name="product">The product with the updated values.</param>
     /// <returns>The product added to the database.</returns>
     /// <exception cref="NotFoundException">When there is no product with the id specified to update.</exception>
-    Task<Product> Update(Product product, CancellationToken ct);
+    Task<Product> Update(UpdateProduct product, CancellationToken ct);
 
     /// <summary>
     /// Deletes the product specified by its id.
