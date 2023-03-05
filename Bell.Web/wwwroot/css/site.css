@@ -43,6 +43,14 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+/* NOTE Custom text styles */
+
+.text-monetary {
+  color: #19a347;
+}
+
+/* NOTE Custom icon buttons */
+
 .btn.bi {
   --bs-btn-bg: transparent;
   --bs-btn-border-color: transparent;
