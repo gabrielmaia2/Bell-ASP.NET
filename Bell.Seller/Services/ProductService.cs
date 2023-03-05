@@ -25,11 +25,16 @@ public class ProductService
 
     public async Task<Product> PublishAsync(NewProduct product, CancellationToken ct)
     {
+        product.Price = Decimal.Round(product.Price, 2);
+
         return await repository.AddAsync(product, ct);
     }
 
     public async Task<Product> EditAsync(UpdateProduct product, CancellationToken ct)
     {
+        if (product.Price != null)
+            product.Price = Decimal.Round((decimal)product.Price, 2);
+
         return await repository.UpdateAsync(product, ct);
     }
 

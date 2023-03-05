@@ -5,13 +5,13 @@ namespace Bell.Seller.Domain.Models;
 /// </summary>
 public class UpdateProduct
 {
-    public ulong? Id { get; init; } = null;
+    public ulong? Id { get; set; } = null;
 
-    public string? Name { get; init; } = null;
+    public string? Name { get; set; } = null;
 
-    public string? Description { get; init; } = null;
+    public string? Description { get; set; } = null;
 
-    public decimal? Price { get; init; } = null;
+    public decimal? Price { get; set; } = null;
 
     public UpdateProduct() { }
 }
