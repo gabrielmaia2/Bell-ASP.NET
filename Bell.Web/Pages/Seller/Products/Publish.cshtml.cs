@@ -32,5 +32,10 @@ namespace Bell.Web.Pages.Seller.Products
 
             return RedirectToPage("View", new { id = product.Id });
         }
+
+        public IActionResult OnPostCancel(CancellationToken ct)
+        {
+            return RedirectToPagePermanent("Index");
+        }
     }
 }
