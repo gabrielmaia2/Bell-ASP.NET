@@ -53,8 +53,7 @@ public class ProductDB
 
     public void SetFrom(UpdateProduct product)
     {
-        if (product.Id != null)
-            Id = (ulong)product.Id;
+        Id = product.Id;
         if (product.Name != null)
             Name = product.Name;
         if (product.Description != null)

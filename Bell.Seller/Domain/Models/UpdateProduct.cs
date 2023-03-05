@@ -5,7 +5,7 @@ namespace Bell.Seller.Domain.Models;
 /// </summary>
 public class UpdateProduct
 {
-    public ulong? Id { get; set; } = null;
+    public ulong Id { get; set; }
 
     public string? Name { get; set; } = null;
 
