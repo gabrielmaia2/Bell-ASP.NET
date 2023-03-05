@@ -26,11 +26,7 @@ public class BellContext : DbContext
     // Maps types invalid to SQLite into valid types.
     private void ConfigureDevelopment(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<ProductDB>().Property(p => p.Id)
-            .HasConversion(
-                id => (int)id,
-                id => (ulong)id
-            );
+        modelBuilder.Entity<ProductDB>().Property(p => p.Id).HasConversion<int>();
     }
 
     public DbSet<ProductDB> Products { get; set; }
