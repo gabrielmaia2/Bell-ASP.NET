@@ -17,7 +17,7 @@ public class ProductRepository : IProductRepository
         this.context = context;
     }
 
-    public async Task<Page<Product>> SearchOwnProducts(string search, uint currentPage, uint pageSize, CancellationToken ct)
+    public async Task<Page<Product>> SearchOwnProductsAsync(string search, uint currentPage, uint pageSize, CancellationToken ct)
     {
         var res = context.Products
             .Where(p => EF.Functions.Like(p.Name, $"{search}%"))
@@ -30,13 +30,13 @@ public class ProductRepository : IProductRepository
         return new Page<Product>(content.AsReadOnly(), currentPage, pageSize, (uint)content.Count());
     }
 
-    public async Task<Product?> GetOwnProduct(ulong id, CancellationToken ct)
+    public async Task<Product?> GetOwnProductAsync(ulong id, CancellationToken ct)
     {
         var productDB = await context.Products.FindAsync(id, ct);
         return productDB?.AsProduct().Copy();
     }
 
-    public async Task<Product> Add(NewProduct product, CancellationToken ct)
+    public async Task<Product> AddAsync(NewProduct product, CancellationToken ct)
     {
         var entity = await context.Products.AddAsync(new ProductDB(product), ct);
         var productDB = entity.Entity;
@@ -44,7 +44,7 @@ public class ProductRepository : IProductRepository
         return productDB.AsProduct();
     }
 
-    public async Task<Product> Update(Product product, CancellationToken ct)
+    public async Task<Product> UpdateAsync(UpdateProduct product, CancellationToken ct)
     {
         var entity = await context.Products.FindAsync(product.Id, ct);
 
@@ -55,7 +55,7 @@ public class ProductRepository : IProductRepository
         return entity.AsProduct();
     }
 
-    public async Task<Product> Delete(ulong id, CancellationToken ct)
+    public async Task<Product> DeleteAsync(ulong id, CancellationToken ct)
     {
         var entity = await context.Products.FindAsync(id, ct);
 

@@ -6,14 +6,14 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Bell.Web.Pages.Seller.Products
 {
-    public class ViewModel : PageModel
+    public class EditModel : PageModel
     {
         private readonly ProductController controller;
 
         [BindProperty]
         public Product Product { get; set; } = new();
 
-        public ViewModel(ProductController controller)
+        public EditModel(ProductController controller)
         {
             this.controller = controller;
         }
@@ -28,23 +28,23 @@ namespace Bell.Web.Pages.Seller.Products
             return Page();
         }
 
-        public IActionResult OnPostEdit(ulong id, CancellationToken ct)
-        {
-            return RedirectToPage("Edit", new { id = Product.Id });
-        }
-
-        public async Task<IActionResult> OnPostDeleteAsync(ulong id, CancellationToken ct)
+        public async Task<IActionResult> OnPostAsync(CancellationToken ct)
         {
             try
             {
-                await controller.DeleteAsync(id, ct);
+                await controller.EditAsync(Product.AsUpdateProduct(), ct);
             }
             catch (NotFoundException)
             {
                 return NotFound();
             }
 
-            return RedirectToPagePermanent("Index");
+            return RedirectToPagePermanent("View", new { id = Product.Id });
+        }
+
+        public IActionResult OnPostCancel(CancellationToken ct)
+        {
+            return RedirectToPagePermanent("View", new { id = Product.Id });
         }
     }
 }

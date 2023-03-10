@@ -42,3 +42,100 @@ input[type="number"]::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+/* NOTE Custom text styles */
+
+.text-monetary {
+  color: #19a347;
+}
+
+/* NOTE Custom icon buttons */
+
+.btn.bi {
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: transparent;
+  --bs-btn-hover-bg: transparent;
+  --bs-btn-hover-border-color: transparent;
+  --bs-btn-active-bg: transparent;
+  --bs-btn-active-border-color: transparent;
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: transparent;
+  --bs-btn-focus-shadow-rgb: 130, 138, 145;
+  --bs-btn-active-shadow: inset 0 0 0 rgba(0, 0, 0, 0);
+  --bs-btn-disabled-color: #afafaf;
+}
+
+.btn.bi:active {
+  box-shadow: none;
+}
+
+.btn-secondary.bi {
+  --bs-btn-color: #828b92;
+  --bs-btn-hover-color: #5e666e;
+  --bs-btn-active-color: #2d3033;
+}
+
+.btn-primary.bi {
+  --bs-btn-color: #0d6efd;
+  --bs-btn-hover-color: #0b57c9;
+  --bs-btn-active-color: #073477;
+}
+
+.btn-success.bi {
+  --bs-btn-color: #1c995f;
+  --bs-btn-hover-color: #0f7444;
+  --bs-btn-active-color: #004424;
+}
+
+.btn-danger.bi {
+  --bs-btn-color: #dc3545;
+  --bs-btn-hover-color: #ad2836;
+  --bs-btn-active-color: #520007;
+}
+
+/* NOTE Product preview */
+
+.product-preview {
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25) !important;
+  --bs-btn-bg: white;
+  --bs-btn-border-color: black;
+  --bs-btn-hover-bg: white;
+  --bs-btn-hover-border-color: black;
+  --bs-btn-active-bg: white;
+  --bs-btn-active-border-color: black;
+  --bs-btn-disabled-color: #696969;
+  --bs-btn-disabled-bg: white;
+  --bs-btn-disabled-border-color: black;
+}
+
+.product-preview:focus {
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4) !important;
+}
+
+.product-preview:active {
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
+}
+
+.product-preview .description {
+  color: transparent;
+  max-height: 10em;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 1) 0,
+    rgba(0, 0, 0, 1) 8em,
+    rgba(255, 255, 255, 1) 10em
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+/* NOTE Serach bar */
+
+.search-bar {
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.search-bar:active {
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
+  outline: none !important;
+}

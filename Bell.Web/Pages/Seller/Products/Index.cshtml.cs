@@ -17,7 +17,7 @@ namespace Bell.Web.Pages.Seller.Products
 
         public int RowSize => 5;
 
-        public IEnumerable<Product?[]> Rows { get; set; } = new List<Product?[]>();
+        public IEnumerable<Product?> Products { get; set; } = new List<Product?>();
 
         public IndexModel(ProductController controller)
         {
@@ -34,10 +34,15 @@ namespace Bell.Web.Pages.Seller.Products
             return await DoSearchAsync(pageIndex, ct);
         }
 
+        public IActionResult OnPostView(ulong id, CancellationToken ct)
+        {
+            return RedirectToPage("View", new { id = id });
+        }
+
         private async Task<IActionResult> DoSearchAsync(uint pageIndex, CancellationToken ct)
         {
-            CurrentPage = (await controller.SearchOwnProducts(Search, pageIndex, 25, ct)).Clone(p => new Product(p));
-            Rows = CurrentPage.Data.Chunk(RowSize);
+            CurrentPage = (await controller.SearchOwnProductsAsync(Search, pageIndex, 25, ct)).Clone(p => new Product(p));
+            Products = CurrentPage.Data;
             return Page();
         }
     }

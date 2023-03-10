@@ -3,19 +3,25 @@
 @{
 }
 
-<div>
-    <div class="">
-        @Model.Product.Name
+<form method="post" class="d-flex flex-column align-items-stretch">
+    <div class="w-50 mx-auto">
+        <h1 class="">@Model.Product.Name</h1>
+
+        <div class="text-monetary fs-5">
+            @($"{Model.Product.Price:C2}")
+        </div>
+
+        <div class="text-break overflow-hidden">
+            @Model.Product.Description
+        </div>
     </div>
-    <div class="">
-        @Model.Product.Description
+    <div class="row m-2">
+        <div class="col-3 offset-3">
+            <button class="btn btn-primary w-100" asp-page-handler="Edit" asp-route-id="@Model.Product.Id">Edit</button>
+        </div>
+        <div class="col-3">
+            <button class="btn btn-danger w-100" asp-page-handler="Delete"
+                asp-route-id="@Model.Product.Id">Delete</button>
+        </div>
     </div>
-    <div class="">
-        @($"{Model.Product.Price:C2}")
-    </div>
-    <div class="d-flex">
-        <form method="post" asp-page-handler="Delete" asp-route-id="@Model.Product.Id">
-            <button class="btn btn-danger">Delete</button>
-        </form>
-    </div>
-</div>
+</form>
