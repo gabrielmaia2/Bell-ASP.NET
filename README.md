@@ -1,5 +1,7 @@
 # Bell
 
+<img src="bell.png" alt="Bell app" width=600></img>
+
 Bell is an e-commerce platform.
 
 I made this project to learn and show my skills with ASP.NET Core and Entity Framework Core.
